@@ -1,11 +1,5 @@
 import { prisma } from "@/lib/prisma";
-
-export type Contact = {
-  id: string;
-  name: string;
-  phone: string;
-  createdAt: Date;
-};
+import { Contact } from "@prisma/client"; // ✅ Import Prisma model
 
 const ITEMS_PER_PAGE = 5;
 
