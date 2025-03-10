@@ -2,7 +2,6 @@ import UpdateForm from "@/components/edit-form";
 import { getContactById } from "@/lib/data";
 import { notFound } from "next/navigation";
 
-// ✅ Manual bikin type Props (karena Next.js ga ada PageProps)
 type Props = {
   params: {
     id: string;
