@@ -2,21 +2,14 @@ import UpdateForm from "@/components/edit-form";
 import { getContactById } from "@/lib/data";
 import { notFound } from "next/navigation";
 
-// Param type cukup bikin sendiri
-type PageProps = {
-  params: {
-    id: string;
-  };
-};
-
-// Jangan lupa kasih 'async' karena fetch data
-const UpdateContactPage = async ({ params }: PageProps) => {
+export default async function UpdateContactPage({
+  params,
+}: {
+  params: { id: string };
+}) {
   const contact = await getContactById(params.id);
 
-  // Handle jika contact tidak ditemukan
-  if (!contact) {
-    notFound();
-  }
+  if (!contact) notFound();
 
   return (
     <div className="max-w-md mx-auto mt-5">
@@ -24,6 +17,4 @@ const UpdateContactPage = async ({ params }: PageProps) => {
       <UpdateForm contact={contact} />
     </div>
   );
-};
-
-export default UpdateContactPage;
+}
