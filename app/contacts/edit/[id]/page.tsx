@@ -2,7 +2,11 @@ import UpdateForm from "@/components/edit-form";
 import { getContactById } from "@/lib/data";
 import { notFound } from "next/navigation";
 
-const UpdateContactPage = async ({ params }: { params: { id: string } }) => {
+export default async function UpdateContactPage({
+  params,
+}: {
+  params: { id: string };
+}) {
   const id = params.id;
   const contact = await getContactById(id);
 
@@ -16,6 +20,4 @@ const UpdateContactPage = async ({ params }: { params: { id: string } }) => {
       <UpdateForm contact={contact} />
     </div>
   );
-};
-
-export default UpdateContactPage;
+}
