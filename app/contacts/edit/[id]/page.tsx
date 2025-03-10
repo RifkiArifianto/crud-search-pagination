@@ -2,16 +2,18 @@ import UpdateForm from "@/components/edit-form";
 import { getContactById } from "@/lib/data";
 import { notFound } from "next/navigation";
 
-type Props = {
+// Param type cukup bikin sendiri
+type PageProps = {
   params: {
     id: string;
   };
 };
 
-const UpdateContactPage = async ({ params }: Props) => {
-  const id = params.id;
-  const contact = await getContactById(id);
+// Jangan lupa kasih 'async' karena fetch data
+const UpdateContactPage = async ({ params }: PageProps) => {
+  const contact = await getContactById(params.id);
 
+  // Handle jika contact tidak ditemukan
   if (!contact) {
     notFound();
   }
